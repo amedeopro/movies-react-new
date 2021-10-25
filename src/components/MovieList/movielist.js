@@ -3,8 +3,19 @@ import React, {useState} from 'react';
 export function MovieList({films}) {
 
     const [filmList, setFilmList] = useState(films)
+    const [filmDetail, setFilmDetail] = useState([]);
+
+    const getFilmDetails = async (id) => {
+
+        await fetch(`https://www.omdbapi.com/?i=${id}&apikey=630fb8c0`)
+          .then(res => res.json())
+          .then(detail => setFilmDetail(detail))
+
+        console.log(filmDetail);
+    };
 
     return (
+
         <div className="col-lg-4 col-md-6 col-xs-12">
 
           
@@ -13,7 +24,7 @@ export function MovieList({films}) {
                 <div className="card-body">
                   <h5 className="card-title">{filmList.Title}</h5>
                   {/* <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
-                  <a href="#" className="btn btn-primary">Go somewhere</a>
+                  <button onClick={() => getFilmDetails(filmList.imdbID)} className="btn btn-primary">Go somewhere</button>
                 </div>
               </div>
           

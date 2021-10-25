@@ -2,7 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react';
 import { MovieList } from './components/MovieList/movielist';
-import { Search } from './components/Search/search'
+import { Search } from './components/Search/search';
+import { Modale } from './components/Modale/modale';
 
 function App() {
 
@@ -37,16 +38,7 @@ function App() {
     <div className="App">
       {
         modale ? 
-        <div className="modale" >
-        <div className="container-modale">
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-        </div>
-      </div>
+          <Modale />
       :
       null
       }
