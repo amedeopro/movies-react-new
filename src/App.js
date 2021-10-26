@@ -26,6 +26,10 @@ function App() {
     getFilmDetails(id);
   }
 
+  const funcChiusuraModale = (chiusura) =>{
+    setModale(chiusura);
+  }
+
   const getFilm = async () => {
     await fetch(url).then((res) => {
       return res.json()
@@ -41,6 +45,7 @@ function App() {
     await fetch(`https://www.omdbapi.com/?i=${id}&apikey=${process.env.REACT_APP_API_KEY_FILM}`)
         .then(res => res.json())
         .then(detail => setFilmDetail(detail))
+    console.log(filmDetail);
   };
 
   useEffect(() => {
@@ -52,7 +57,7 @@ function App() {
     <div className="App">
       {
         modale ? 
-          <Modale filmDet={filmDetail}/>
+          <Modale filmDet={filmDetail} chisuraModale={funcChiusuraModale}/>
       :
       null
       }
