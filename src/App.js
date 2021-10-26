@@ -15,9 +15,15 @@ function App() {
 
   const [film, setFilm] = useState([])
 
+  const [filmDetail, setFilmDetail] = useState([]);
+
 
   const funcSearch = (text) => {
       setSearch(text);
+  }
+
+  const funcDettaglio = (id) => {
+    getFilmDetails(id);
   }
 
   const getFilm = async () => {
@@ -29,9 +35,16 @@ function App() {
     })
   }
 
+
+  const getFilmDetails = async (id) => {
+    setModale(true);
+    await fetch(`https://www.omdbapi.com/?i=${id}&apikey=${process.env.REACT_APP_API_KEY_FILM}`)
+        .then(res => res.json())
+        .then(detail => setFilmDetail(detail))
+  };
+
   useEffect(() => {
     getFilm();
-    console.log(url)
   },[search])
 
 
@@ -39,7 +52,7 @@ function App() {
     <div className="App">
       {
         modale ? 
-          <Modale />
+          <Modale filmDet={filmDetail}/>
       :
       null
       }
@@ -54,7 +67,7 @@ function App() {
       <div className="container">
         <div className="row">
         {film ? film.map((a) => 
-          <MovieList films={a} />
+          <MovieList films={a} dettaglioFilm={funcDettaglio}/>
           ) : <h1>Nessun risultato trovato</h1> }
         </div>
       </div>

@@ -11,6 +11,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+
+.modale .uscita-modale {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .modale .container-modale{
