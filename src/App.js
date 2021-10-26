@@ -11,7 +11,7 @@ function App() {
 
   const [search, setSearch] = useState('godfather')
 
-  const url = `https://www.omdbapi.com/?s=${search}&apikey=630fb8c0`;
+  const url = `https://www.omdbapi.com/?s=${search}&apikey=${process.env.REACT_APP_API_KEY_FILM}`;
 
   const [film, setFilm] = useState([])
 
@@ -31,6 +31,7 @@ function App() {
 
   useEffect(() => {
     getFilm();
+    console.log(url)
   },[search])
 
 

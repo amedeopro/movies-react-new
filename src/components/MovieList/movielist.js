@@ -7,7 +7,7 @@ export function MovieList({films}) {
 
     const getFilmDetails = async (id) => {
 
-        await fetch(`https://www.omdbapi.com/?i=${id}&apikey=630fb8c0`)
+        await fetch(`https://www.omdbapi.com/?i=${id}&apikey=${process.env.REACT_APP_API_KEY_FILM}`)
           .then(res => res.json())
           .then(detail => setFilmDetail(detail))
 
