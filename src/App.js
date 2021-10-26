@@ -28,6 +28,7 @@ function App() {
 
   const funcChiusuraModale = (chiusura) =>{
     setModale(chiusura);
+    setFilmDetail([]);
   }
 
   const getFilm = async () => {
